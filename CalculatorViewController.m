@@ -105,6 +105,7 @@
     if (self.userIsInTheMiddleOfEnteringANumber){
         if (existingStringLength == 1) { 
             self.display.text = @"0";
+            self.userIsInTheMiddleOfEnteringANumber = NO;
         } else {
             self.display.text = [self.display.text substringToIndex:existingStringLength-1];
         }
