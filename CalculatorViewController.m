@@ -31,7 +31,7 @@
     NSUInteger userActionDisplayLength = [userDispText length];
     
     if (userActionDisplayLength >= MAX_USER_ACTION_DISPLAY_LENGTH){
-        userDispText = [userDispText substringWithRange:NSMakeRange(userActionDisplayLength - MAX_USER_ACTION_DISPLAY_LENGTH - 1, MAX_USER_ACTION_DISPLAY_LENGTH)];
+        userDispText = [userDispText substringWithRange:NSMakeRange(userActionDisplayLength - MAX_USER_ACTION_DISPLAY_LENGTH, MAX_USER_ACTION_DISPLAY_LENGTH)];
     }
     self.userActionDisplay.text = userDispText;
 }
@@ -62,12 +62,12 @@
     // invalid action protection (a) divide by zero and (b) sqrt of negative number
     // not entirely sure if this is the right place to do it.
     if ([operation isEqualToString:@"sqrt"] && [self.display.text hasPrefix:@"-"]){
-        self.userActionDisplay.text = @"Cannot do Square Root of negative number";
+        [self updateUserActionDisplay: @"Cannot do Square Root of -ve number"];
         self.userIsInTheMiddleOfEnteringANumber = NO;
         return;
     }
     if ([operation isEqualToString:@"/"] && [self.display.text isEqualToString:@"0"]){
-        self.userActionDisplay.text = @"Cannot divide by zero";
+        [self updateUserActionDisplay: @"Cannot divide by zero"];
         self.userIsInTheMiddleOfEnteringANumber = NO;
         return;
     }

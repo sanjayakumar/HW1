@@ -62,11 +62,11 @@
         result = M_PI;
     } else if ([operation isEqualToString:@"sin"]){
         double angle = [self popOperand];
-        angle = angle/360.0*2*M_PI;
+        angle = angle/180.0*M_PI;
         result = sin(angle);
     } else if ([operation isEqualToString:@"cos"]){
         double angle = [self popOperand];
-        angle = angle/360.0*2*M_PI;
+        angle = angle/180.0*M_PI;
         result = cos(angle);
     } else if ([operation isEqualToString:@"sqrt"]){
         double val = [self popOperand];
